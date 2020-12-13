@@ -9,7 +9,7 @@ public class GenderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "name",length = 15)
     private String name;
@@ -22,16 +22,16 @@ public class GenderEntity {
     @OneToMany(mappedBy = "gender")
     private List<TeacherEntity> teacher;
 
-    public GenderEntity(int id, String name) {
+    public GenderEntity(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -9,7 +9,7 @@ public class SectionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "code")
     private int code;
@@ -30,16 +30,16 @@ public class SectionEntity {
     @ManyToMany(mappedBy = "sections")
     private List<TeacherEntity> teachers;
 
-    public SectionEntity(int id, int code) {
+    public SectionEntity(Long id, int code) {
         this.id = id;
         this.code = code;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

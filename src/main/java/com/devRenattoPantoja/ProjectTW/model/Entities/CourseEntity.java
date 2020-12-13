@@ -9,7 +9,7 @@ public class CourseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "code")
     private int code;
@@ -28,18 +28,18 @@ public class CourseEntity {
     @OneToMany(mappedBy = "course")
     private List<SectionEntity> sections;
 
-    public CourseEntity(int id, int code, int level, String name) {
+    public CourseEntity(Long id, int code, int level, String name) {
         this.id = id;
         this.code = code;
         this.level = level;
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

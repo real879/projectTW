@@ -9,7 +9,7 @@ public class CountryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "name",length = 30)
     private String name;
@@ -22,16 +22,16 @@ public class CountryEntity {
     @OneToMany(mappedBy = "country")
     private List<TeacherEntity> teacher;
 
-    public CountryEntity(int id, String name) {
+    public CountryEntity(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

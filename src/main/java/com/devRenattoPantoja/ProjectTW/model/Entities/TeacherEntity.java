@@ -9,7 +9,7 @@ public class TeacherEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "code")
     private int code;
@@ -45,7 +45,11 @@ public class TeacherEntity {
     @ManyToMany
     private List<SectionEntity> sections;
 
-    public TeacherEntity(int id, int code, String names, String last_names, String email, String personal_email, String url_photo) {
+    //Teacher 1-------------->1 TeacherUser
+    @OneToOne(mappedBy = "teacher")
+    private TeacherUserEntity teacherUser;
+
+    public TeacherEntity(Long id, int code, String names, String last_names, String email, String personal_email, String url_photo) {
         this.id = id;
         this.code = code;
         this.names = names;
@@ -55,11 +59,11 @@ public class TeacherEntity {
         this.url_photo = url_photo;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -141,5 +145,13 @@ public class TeacherEntity {
 
     public void setSections(List<SectionEntity> sections) {
         this.sections = sections;
+    }
+
+    public TeacherUserEntity getTeacherUser() {
+        return teacherUser;
+    }
+
+    public void setTeacherUser(TeacherUserEntity teacherUser) {
+        this.teacherUser = teacherUser;
     }
 }

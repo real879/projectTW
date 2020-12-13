@@ -9,7 +9,7 @@ public class PeriodEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "name",length = 7)
     private String name;
@@ -21,17 +21,17 @@ public class PeriodEntity {
     @OneToMany(mappedBy = "period")
     private List<SectionEntity> sections;
 
-    public PeriodEntity(int id, String name, int year) {
+    public PeriodEntity(Long id, String name, int year) {
         this.id = id;
         this.name = name;
         this.year = year;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

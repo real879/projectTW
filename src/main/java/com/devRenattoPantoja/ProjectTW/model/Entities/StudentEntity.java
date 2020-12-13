@@ -9,7 +9,7 @@ public class StudentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "code")
     private int code;
@@ -45,7 +45,11 @@ public class StudentEntity {
     @ManyToMany
     private List<SectionEntity> sections;
 
-    public StudentEntity(int id, int code, String name, String last_name, String email, String personal_email, String url_photo) {
+    //Student 1----------->1 StudentUser
+    @OneToOne(mappedBy = "student")
+    private StudentUserEntity studentUser;
+
+    public StudentEntity(Long id, int code, String name, String last_name, String email, String personal_email, String url_photo) {
         this.id = id;
         this.code = code;
         this.name = name;
@@ -55,11 +59,11 @@ public class StudentEntity {
         this.url_photo = url_photo;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -141,5 +145,13 @@ public class StudentEntity {
 
     public void setSections(List<SectionEntity> sections) {
         this.sections = sections;
+    }
+
+    public StudentUserEntity getStudentUser() {
+        return studentUser;
+    }
+
+    public void setStudentUser(StudentUserEntity studentUser) {
+        this.studentUser = studentUser;
     }
 }
